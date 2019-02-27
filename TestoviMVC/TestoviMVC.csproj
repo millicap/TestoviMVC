@@ -163,6 +163,7 @@
     <Compile Include="Models\DetaljiTestaViewModel.cs" />
     <Compile Include="Models\KorisnikViewModel.cs" />
     <Compile Include="Models\LogovanjeViewModel.cs" />
+    <Compile Include="Models\NajpopularnijiTestoviViewModel.cs" />
     <Compile Include="Models\OdgovorViewModel.cs" />
     <Compile Include="Models\PitanjaViewModel.cs" />
     <Compile Include="Models\PitanjeCreateViewModel.cs" />

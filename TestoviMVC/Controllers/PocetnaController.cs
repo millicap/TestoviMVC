@@ -27,10 +27,24 @@ namespace TestoviMVC.Controllers
 
                     }).OrderByDescending(t=> t.DatumKreiranja).ToList();
 
+                    var najpopularnijitestovi = context.Tests
+                        .Select(t => new NajpopularnijiTestoviViewModel()
+                        {
+                            TestId = t.TestId,
+                            Naziv = t.Naziv,
+                            Opis = t.Opis,
+                            BrojPolaganja = t.KorisnikTests.Count
+                        }).ToList().OrderByDescending(t=> t.BrojPolaganja).Take(5);
+
+                    ViewBag.NajpopularnijiTestovi = najpopularnijitestovi;
+
                     return View(testovi);
                 }
 
             }
         }
+
+
+      
     }
 }

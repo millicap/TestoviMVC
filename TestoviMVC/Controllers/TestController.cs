@@ -108,16 +108,44 @@ namespace TestoviMVC.Controllers
 
         }
 
-        public ActionResult PolaziTest(string id)
+        /*public ActionResult PolaziTest(string id)
         {
             using (var context = new TestoviContext())
             {
                 var testId = Convert.ToInt32(id);
 
+                var test = context.Tests.Find(testId).Pitanjes.Select(t => new PitanjeCreateViewModel()
+                {
+                    Tekst = t.Tekst,
+                    PitanjeId = t.PitanjeId,
+                    PrviOdgovor = t.Odgovors.ElementAt(0).Tekst,
+                    DrugiOdgovor = t.Odgovors.ElementAt(1).Tekst,
+                    TreciOdgovor = t.Odgovors.ElementAt(2).Tekst,
+                    CetvrtiOdgovor = t.Odgovors.ElementAt(3).Tekst
 
-
+                }).ToList();
+                return View(test);
             }
-        }
+        }*/
+
+       /* public ActionResult PolaziTest(List<PitanjeCreateViewModel> Model )
+        {
+            using (var context = new TestoviContext())
+            {
+                var korisnik = context.Korisniks.ToList().FirstOrDefault(k => k.KorisnickoIme == User.Identity.Name);
+
+                KorisnikTest korisnikTest = new KorisnikTest()
+                {
+                   
+                    Datum = DateTime.Now,
+                    KorisnikId = korisnik.KorisnikId,
+                    TestId = Model.ElementAt(0).TestId,
+                    
+
+                };
+            }
+                return RedirectToAction("Index", "Pocetna");
+        }*/
 
     }
 

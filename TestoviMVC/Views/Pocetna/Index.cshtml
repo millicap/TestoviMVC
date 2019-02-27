@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
+    var najpopularnijiTestovi = ViewBag.NajpopularnijiTestovi as IEnumerable<TestoviMVC.Models.NajpopularnijiTestoviViewModel>;
 }
 
 <h2>Testovi</h2>
@@ -14,71 +15,86 @@
     <a href="/Test/Create">Novi test</a>
     }
 </p>
-<div class="col-md-8">
-    <table class="table">
-        <tr>
+<div class="row">
+    <div class="col-md-8">
+        <table class="table">
+            <tr>
 
-            @Html.Hidden("TestId")
-            <th>
-                @Html.DisplayNameFor(model => model.Naziv)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Opis)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProcenatBodovaZaPolaganje)
-            </th>
-            @if (User.Identity.IsAuthenticated)
+                @Html.Hidden("TestId")
+                <th>
+                    @Html.DisplayNameFor(model => model.Naziv)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Opis)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProcenatBodovaZaPolaganje)
+                </th>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <th>
+                        @Html.DisplayNameFor(model => model.DatumKreiranja)
+                    </th>
+                }
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
             {
-            <th>
-                @Html.DisplayNameFor(model => model.DatumKreiranja)
-            </th>
-            }
-            <th></th>
-        </tr>
+                <tr>
 
-        @foreach (var item in Model)
+                    @Html.Hidden("TestId")
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Naziv)
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Opis)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProcenatBodovaZaPolaganje)
+                    </td>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DatumKreiranja)
+                        </td>
+                    }
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        <td>
+                            <a href="/Test/Edit/@item.TestId">Izmijeni</a> |
+                            <a href="/Test/Details/@item.TestId">Detalji</a>
+
+                        </td>
+                    }
+
+                    @if (User.IsInRole("Korisnik"))
+                    {
+                        <td>
+                            <a href="/Test/PoloziTest/@item.TestId">Polazi test</a>
+                        </td>
+                    }
+                </tr>
+            }
+
+        </table>
+    </div>
+
+    <div class="col-md-4">
+
+        <h3 style="margin-top:0">Najpopularniji testovi</h3>
+
+        @foreach (var item in najpopularnijiTestovi)
         {
-        <tr>
+            <p>@item.Naziv @item.Opis</p>
 
-            @Html.Hidden("TestId")
-
-            <td>
-                @Html.DisplayFor(modelItem => item.Naziv)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Opis)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProcenatBodovaZaPolaganje)
-            </td>
-            @if (User.Identity.IsAuthenticated)
-            {
-                <td>
-                    @Html.DisplayFor(modelItem => item.DatumKreiranja)
-                </td>
-            }
-            @if (User.IsInRole("Administrator"))
-            {
-                <td>
-                    <a href="/Test/Edit/@item.TestId">Izmijeni</a> |
-                    <a href="/Test/Details/@item.TestId">Detalji</a>
-
-                </td>
-            }
-
-            @if (User.IsInRole("Korisnik"))
-            {
-                <td>
-                <a href="/Test/PoloziTest/@item.TestId">Polazi test</a>
-               </td>
-            }
-</tr>
         }
 
-    </table>
+        <h3>3 najbolja kandidata</h3>
+
+    </div>
+
 </div>
 
-<div class="col-md-4">
-
-</div>

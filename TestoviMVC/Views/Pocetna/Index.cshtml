@@ -1,0 +1,84 @@
+﻿@model IEnumerable<TestoviMVC.Models.PocetnaAdminViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Testovi</h2>
+
+<p>
+    @*@Html.ActionLink("Novi test", "Create")*@
+
+    @if (User.IsInRole("Administrator"))
+    {
+    <a href="/Test/Create">Novi test</a>
+    }
+</p>
+<div class="col-md-8">
+    <table class="table">
+        <tr>
+
+            @Html.Hidden("TestId")
+            <th>
+                @Html.DisplayNameFor(model => model.Naziv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Opis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProcenatBodovaZaPolaganje)
+            </th>
+            @if (User.Identity.IsAuthenticated)
+            {
+            <th>
+                @Html.DisplayNameFor(model => model.DatumKreiranja)
+            </th>
+            }
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+
+            @Html.Hidden("TestId")
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Naziv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Opis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProcenatBodovaZaPolaganje)
+            </td>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.DatumKreiranja)
+                </td>
+            }
+            @if (User.IsInRole("Administrator"))
+            {
+                <td>
+                    <a href="/Test/Edit/@item.TestId">Izmijeni</a> |
+                    <a href="/Test/Details/@item.TestId">Detalji</a>
+
+                </td>
+            }
+
+            @if (User.IsInRole("Korisnik"))
+            {
+                <td>
+                <a href="/Test/PoloziTest/@item.TestId">Polazi test</a>
+               </td>
+            }
+</tr>
+        }
+
+    </table>
+</div>
+
+<div class="col-md-4">
+
+</div>

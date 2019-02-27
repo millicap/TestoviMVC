@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a1d2d370e6bd49029fe65f19eeff4d5b" Name="Diagram1">
+        <EntityTypeShape EntityType="Akademija_MilicaPetrovicModel.Korisnik" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Akademija_MilicaPetrovicModel.KorisnikTest" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Akademija_MilicaPetrovicModel.Odgovor" Width="1.5" PointX="5.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Akademija_MilicaPetrovicModel.Pitanje" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Akademija_MilicaPetrovicModel.Test" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Akademija_MilicaPetrovicModel.Uloga" Width="1.5" PointX="1.5" PointY="10.875" IsExpanded="true" />
+        <AssociationConnector Association="Akademija_MilicaPetrovicModel.FK_Korisnik_Uloga" ManuallyRouted="false" />
+        <AssociationConnector Association="Akademija_MilicaPetrovicModel.FK_KorisnikTest_Korisnik" ManuallyRouted="false" />
+        <AssociationConnector Association="Akademija_MilicaPetrovicModel.FK_KorisnikTest_Test" ManuallyRouted="false" />
+        <AssociationConnector Association="Akademija_MilicaPetrovicModel.FK_Odgovor_Pitanje" ManuallyRouted="false" />
+        <AssociationConnector Association="Akademija_MilicaPetrovicModel.FK_Pitanje_Test" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

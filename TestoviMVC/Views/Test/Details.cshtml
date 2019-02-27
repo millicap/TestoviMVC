@@ -1,0 +1,50 @@
+﻿@model TestoviMVC.Models.DetaljiTestaViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalji</h2>
+
+<div>
+    <div>
+
+        <p>Naziv testa: @Model.Naziv</p>
+        <p>Opis: @Model.Opis</p>
+        <p>Procenat bodova za polaganje: @Model.ProcenatBodovaZaPolaganje</p>
+        <p>Datum kreiranja: @Model.DatumKreiranja</p>
+        
+    </div>
+    <hr/>
+    <div>
+
+        @foreach (var item in Model.ListaPitanja)
+        {
+            <div>
+                @Html.Raw(@item.Tekst)
+                <p>@item.BrojBodova</p>
+
+            </div>
+            <div>
+                <ul>
+                    @foreach (var odgovori in item.ListaOdgovora)
+                    {
+                        <li>@odgovori.Tekst<span>@(odgovori.Tacan != null ? "Tacan" : "")</span></li>
+                    }
+
+                </ul>
+            </div>
+        }
+
+        <a href="/Pitanja/Create/@Model.TestId">Novo pitanje</a>
+
+        @*<a href="/Pitanja/Create/@Model.TestId">Lista polaganja</a>*@
+
+
+
+    </div>
+
+</div>
+
+
+

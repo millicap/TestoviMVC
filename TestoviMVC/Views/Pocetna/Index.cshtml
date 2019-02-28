@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Index";
     var najpopularnijiTestovi = ViewBag.NajpopularnijiTestovi as IEnumerable<TestoviMVC.Models.NajpopularnijiTestoviViewModel>;
+    var triNajboljaKandidata = ViewBag.triNajboljaKandidata as IEnumerable<TestoviMVC.Models.TriNajboljaKandidataViewModel>;
 }
 
 <h2>Testovi</h2>
@@ -73,7 +74,7 @@
                     @if (User.IsInRole("Korisnik"))
                     {
                         <td>
-                            <a href="/Test/PoloziTest/@item.TestId">Polazi test</a>
+                            <a href="/Test/PolaziTest/@item.TestId">Polazi test</a>
                         </td>
                     }
                 </tr>
@@ -82,6 +83,8 @@
         </table>
     </div>
 
+    @if (User.IsInRole("Administrator"))
+    {
     <div class="col-md-4">
 
         <h3 style="margin-top:0">Najpopularniji testovi</h3>
@@ -94,7 +97,14 @@
 
         <h3>3 najbolja kandidata</h3>
 
+        @foreach (var item in triNajboljaKandidata)
+        {
+            <p>@item.Ime @item.Prezime @item.ProcenatOdgovorenihPitanja</p>
+
+        }
+
     </div>
+    }
 
 </div>
 

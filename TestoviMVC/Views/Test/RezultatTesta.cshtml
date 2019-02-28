@@ -1,0 +1,47 @@
+﻿@model TestoviMVC.Models.RezultatTestaViewModel
+
+@{
+    ViewBag.Title = "RezultatTesta";
+}
+
+<h2>Rezultat testa</h2>
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BrojTacnihOdgovora)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BrojTacnihOdgovora)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BrojNetacnihOdgovora)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BrojNetacnihOdgovora)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UkupanBrojBodova)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UkupanBrojBodova)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProcenatOsvojenihBodova)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProcenatOsvojenihBodova)
+        </dd>
+
+    </dl>
+</div>
+

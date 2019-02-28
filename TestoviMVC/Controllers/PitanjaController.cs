@@ -11,12 +11,14 @@ namespace TestoviMVC.Controllers
     public class PitanjaController : Controller
     {
         // GET: Pitanja
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create(string id)
         {
             return View(new PitanjeCreateViewModel() {TestId= Convert.ToInt32(id) });
         }
 
         [HttpPost, ValidateInput(false)]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create(PitanjeCreateViewModel pitanjeCreateVM)
         {
             using (var context = new TestoviContext())

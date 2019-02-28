@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "ListaSvihPolaganja";
+}
+
+<h2>Lista svih polaganja</h2>
+<input value="@ViewBag.Id" id="testId" style="display:none" />
+
+<div id="SvaPolaganjaContainer"></div>
+
+@section scripts{
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#SvaPolaganjaContainer').jtable({
+            title: 'The Student List',
+            paging: true, //Enable paging
+            pageSize: 10, //Set page size (default: 10)
+            sorting: true, //Enable sorting
+            defaultSorting: 'ImeKorisnika ASC', //Set default sorting
+            actions: {
+                listAction: `/Test/ListaSvihPolaganjaTesta?id=${$('#testId').val()}`   //poslan testId kao parametar
+            },
+            fields: {
+                ImeKorisnika: {
+                    title: 'Ime korisnika',
+                },
+                DatumPolaganja: {
+                    title: 'Datum polaganja',
+                    width: '23%',
+                    type: 'date',
+                },
+                BrojOsvojenihBodova: {
+                    title: 'Broj osvojenih bodova'
+                },
+                ProcenatOsvojenihBodova: {
+                    title: 'Procenat osvojenih bodova'
+
+                }
+            }
+        });
+
+        //Load student list from server
+        $('#SvaPolaganjaContainer').jtable('load');
+    });
+
+</script>
+
+}

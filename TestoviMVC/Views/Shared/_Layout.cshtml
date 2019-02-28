@@ -34,7 +34,9 @@
                     }
 
                     @if (User.IsInRole("Korisnik"))
-                    {                    
+
+                    {     
+                        <li>@Html.ActionLink("Moji testovi", "Index", "MojiTestovi")</li>
                         <li>@Html.ActionLink("Odjava", "Odjava", "Logovanje")</li>
                     }
 

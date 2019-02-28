@@ -62,7 +62,7 @@ namespace TestoviMVC.Controllers
             }
         }
 
-
+        [Authorize(Roles = "Administrator, Korisnik")]
         public ActionResult Odjava()
         {
             FormsAuthentication.SignOut();

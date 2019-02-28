@@ -35,10 +35,10 @@ namespace TestoviMVC.Controllers
                                                          DateTime.Now.AddMinutes(30),
                                                          false,
                                                          //"User",     ovaj ne moze jer ne mogu 2 user-a u 2 stringa
-                                                          korisnik.Uloga.Naziv
+                                                          korisnik.Uloga.Naziv      //ako moze imati samo jednu ulogu
 
                                                          //Primjer dodavanja uloga za korisnika
-                                                         //string.Join(",", korisnik.KorisnikUlogas.Select(o => o.Uloga.Naziv).Distinct())
+                                                         //string.Join(",", korisnik.KorisnikUlogas.Select(o => o.Uloga.Naziv).Distinct()) ako moze imati vise uloga
                                                          );
 
                     var encTicket = FormsAuthentication.Encrypt(authTicket);

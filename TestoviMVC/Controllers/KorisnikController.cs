@@ -93,8 +93,8 @@ namespace TestoviMVC.Controllers
         [Authorize(Roles = "Administrator")]
         public JsonResult Update(KorisnikViewModel korisnikVM)
         {
-           // try
-           // {
+           try
+            {
                 if (!ModelState.IsValid)
                 {
                     return Json(new { Result = "ERROR", Message = "Form is not valid! Please correct it and try again." });
@@ -114,13 +114,12 @@ namespace TestoviMVC.Controllers
                     context.SaveChanges();
                 }
                 return Json(new { Result = "OK" });
-            //}
-           //catch (Exception ex)
-            //{
+            }
+           catch (Exception ex)
+            {
                 //return Json(new { Result = "ERROR", Message = ex.Message });
-            //}
+            }
         }
-
 
         [HttpPost]
         [Authorize(Roles = "Administrator")]
@@ -130,7 +129,6 @@ namespace TestoviMVC.Controllers
             {
                 using (var context = new TestoviContext())
                 {
-
                     context.Korisniks.Remove(context.Korisniks.Find(korisnikId));
                     context.SaveChanges();
                 }
@@ -153,7 +151,6 @@ namespace TestoviMVC.Controllers
                     {
                         Value = u.UlogaId,
                         DisplayText = u.Naziv
-
                     }).ToList();
                     //Return result to jTable
                     return Json(new { Result = "OK", Options = uloge });
